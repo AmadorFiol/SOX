@@ -9,7 +9,7 @@ def busqueda_for(arr,var_encontrar):
     i=0
     if i in arr:
         if "juan" == i:
-            
+         print(arr)   
 
 def recorrida_while(arr):
     i=0
@@ -23,7 +23,7 @@ def recorrida_for(arr):
 if __name__=="__main__":
     arr=["macia","juan","jose","ernesto"]
     var_encontrar="juan"
-    busqueda_for()
-    busqueda_while()
-    recorrida_for()
-    recorrida_while()
+    busqueda_for(arr,var_encontrar)
+    busqueda_while(arr,var_encontrar)
+    recorrida_for(arr)
+    recorrida_while(arr)
