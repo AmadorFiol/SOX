@@ -1,15 +1,16 @@
 def busqueda_while(arr,var_encontrar):
     encontrar=False
     while not encontrar:
-        if "juan"==arr:
+        if arr==var_encontrar:
             print(arr)
             encontrar=True
 
 def busqueda_for(arr,var_encontrar):
     i=0
-    if i in arr:
+    for i in arr:
         if "juan" == i:
-         print(arr)   
+            print(arr)
+            break  
 
 def recorrida_while(arr):
     i=0
