@@ -2,26 +2,6 @@ import random
 import time
 import os
 import getpass
-'''
-Juego de adivinar numero:
-    Menu:
-        1) Iniciar Partida
-            $Numero=random(0-9)
-            "Introduce username":$Nombre
-            -Cambio pantalla-
-            "Elige un numero del 0 al 9"
-                if $NumeroPlayer!=$Numero:
-                    Has fallado, vuelve a intentar
-                    $Intentos=$Intentos+1
-                if $NumeroPlayer==$Numero:
-                    Correcto el numero era $NumeroPlayer
-            -END-
-        2) Ver ranking
-            Print($Posicion=>$Nombre=>$Intentos)
-        3) Salir
-
-    Clases Partida,Menu
-'''
 
 class Menu():
     def __init__(self):
