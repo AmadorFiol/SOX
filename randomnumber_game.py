@@ -59,7 +59,17 @@ class Partida():
     def start(self):
         os.system ("clear")
         numerorandom=random.randint(0,9)
-        numeroplayer=int(input("Escoge un numero del 0 al 9: "))
+        numeroplayer=input("Escoge un numero del 0 al 9: ")
+        try:
+                numeroplayer=int(numeroplayer)
+                is_int=True
+        except ValueError:
+                is_int=False
+
+        if is_int==False:
+            print("Inserte denuevo el nombre de usuario y reintente escribiendo un numero")
+            time.sleep(1)
+            Partida.insertar_username(self=Partida)
         self.intentos=1
         while numeroplayer!=numerorandom:
             if numeroplayer!=numerorandom:
@@ -68,7 +78,16 @@ class Partida():
                 self.intentos=self.intentos+1
                 time.sleep(1)
                 os.system ("clear")
-            numeroplayer=int(input("Escoge un numero del 0 al 9: "))
+            numeroplayer=input("Escoge un numero del 0 al 9: ")
+            try:
+                numeroplayer=int(numeroplayer)
+                is_int=True
+            except ValueError:
+                is_int=False
+            if is_int==False:
+                print("Inserte denuevo el nombre de usuario y reintente escribiendo un numero")
+                time.sleep(1)
+                Partida.insertar_username(self=Partida)
         print("\n Has acertado! Te ha tomado", self.intentos,"intentos")
         time.sleep(1)
         Ranking.entrar_ranking(self=Ranking)
