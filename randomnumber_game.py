@@ -41,6 +41,7 @@ class Menu():
             case _:
                 print("Por favor escoga una de las opciones del menu")
                 time.sleep(1.25)
+                os.system("clear")
                 Menu.mostar_menu()
 
 class Partida():
