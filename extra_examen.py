@@ -3,14 +3,15 @@ import random
 import pdb
 
 class Coche():
-    def __init__(self,nombre,caballos):
+    def __init__(self, nombre, caballos):
         self.nombre=nombre
         self.caballos=caballos
 
     def to_string(self):
-        a = "hola"
-        return "{marca:", self.nombre, "caballos: ", self.caballos,"}"
-    
+        return "{marca:", self.nombre, "caballos: ", self.caballos, "}"
+    '''Inicio extras'''
+    def quienes_participante
+    '''Fin extras'''
 class Carrera():
     def __init__(self, coches):
         self.coches=coches
@@ -26,16 +27,28 @@ class Carrera():
         print("La carrera a empezado...")
 
     def finaliza_carrera(self):
-        random.shuffle(self.coches)
+        #Escoger resultados con random
+        for i in self.resultado:
+            posicion=random.randint(1,3)
+            if self.resultado[posicion]!='':
+                self.resultado[posicion]=self.coches[i]
+            else:
+                i=i-1
 
     def muestra_resultado(self):
-        for coche in self.coches:
-            print(coche.to_string())
+        #Mostrar el ranking
+        for coches in self.coches:
+            print(coches.to_string())
+    
+    '''Inicio extras'''
+    def cuantos_coches(self):
+        cantidad_coches=input("cuantos coches van a participar en la carrera de hoy?")
 
+    '''Fin extras'''
 if __name__ == '__main__':
-    c1 = Coche("Mercedes","120hp")
-    c2 = Coche("Ferrari","200hp")
-    c3 = Coche("Mustang","200hp")
+    c1 = Coche("Mercedes", "120hp")
+    c2 = Coche("Ferrari", "200hp")
+    c3 = Coche("Mustang", "200hp")
     coches=[c1, c2, c3]
 
     c = Carrera(coches)
