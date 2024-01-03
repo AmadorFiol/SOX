@@ -81,7 +81,7 @@ class Cuenta():
 
     def revision_datos_interes(self):
         try:
-                self.ratio=float(self.saldo)
+                self.ratio=float(self.ratio)
                 self.tiempo=float(self.tiempo)
                 is_int=True
         except ValueError:
@@ -105,15 +105,15 @@ class Cuenta():
                 Cuenta.datos_interes(Cuenta)
 
     def formula_simple(self):
-        self.ci=self.saldo
-        self.interes=(self.ci*self.ratio*self.tiempo)/100
-        self.saldo=self.ci+self.interes
+        ci=self.saldo
+        self.interes=(ci*self.ratio*self.tiempo)/100
+        self.saldo=ci+self.interes
         print("Tras realizar los calculos correspondientes asi queda tu cuenta")
         Cuenta.cuenta_final(Cuenta)
 
     def formula_compuesto(self):
-        self.ci=self.saldo
-        self.interes=self.ci*((1+(self.ratio/100))**(self.tiempo))
+        ci=self.saldo
+        self.interes=ci*((1+(self.ratio/100))**(self.tiempo))
         self.saldo=self.interes
         print("Tras realizar los calculos correspondientes asi queda tu cuenta")
         Cuenta.cuenta_final(Cuenta)
