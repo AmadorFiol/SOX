@@ -10,13 +10,13 @@ class Cuenta():
         self.saldo=saldo
         self.numero_cuenta=numero_cuenta
 
-    def menu_banco():
+    def crear_cuenta():
         print("Bienvenido al banco de Amador, ¿que desea hacer?")
         print("1. Realizar pruebas con cuenta predeterminada")
         print("2. Realizar pruebas con cuenta personalizada")
-        Cuenta.eleccion_user(Cuenta)
+        Cuenta.eleccion_cuenta(Cuenta)
     
-    def eleccion_user(self):
+    def eleccion_cuenta(self):
         self.dni=""
         self.numero_cuenta=""
         self.saldo=""
@@ -30,7 +30,7 @@ class Cuenta():
                 print("Escoga una de las opciones proporcionadas")
                 time.sleep(1.25)
                 os.system("clear")
-                Cuenta.menu_banco()
+                Cuenta.crear_cuenta()
     
     def obtener_datos(self):
         os.system("clear")
@@ -69,8 +69,60 @@ class Cuenta():
         print("Saldo  disponible",self.saldo)
         print("Numero de a cuenta",self.numero_cuenta)
         print("")
-        Cuenta.datos_interes(Cuenta)
+        Cuenta.menu_banco()
     
+    def menu_banco():
+        print("Que desea realizar:")
+        print("1. Ingresar dinero")
+        print("2. Retirar dinero")
+        print("3. Actualizar saldo")
+        Cuenta.eleccion_user(Cuenta)
+
+    def eleccion_user(self):
+        accion=input("(Escriba el numero de la opcion deseada)")
+        match(accion):
+            case "1":
+                self.ingreso_retiro=1
+                Cuenta.cantidad(Cuenta)
+            case "2":
+                self.ingreso_retiro=2
+                Cuenta.cantidad(Cuenta)
+            case "3":
+                Cuenta.datos_interes(Cuenta)
+            case _:
+                print("Escoga una de las opciones proporcionadas")
+                time.sleep(1.25)
+                os.system("clear")
+                Cuenta.menu_banco()
+
+    def cantidad(self):
+        if self.ingreso_retiro==1:
+            self.cantidad_user=input("Escriba la cantiad a ingresar")
+            Cuenta.revision_cantidad(Cuenta)
+        elif self.ingreso_retiro==2:
+            self.cantidad_user=input("Escriba la cantidad a retirar")
+            Cuenta.revision_cantidad(Cuenta)
+
+    def revision_cantidad(self):
+        try:
+            self.cantidad_user=float(self.cantidad_user)
+            is_int=True
+        except ValueError:
+            is_int=False
+
+        if is_int==False:
+            print("Por favor asegurese que ha insertado un valor numerico")
+            time.sleep(1)
+            os.system("clear")
+            Cuenta.cantidad(Cuenta)
+        elif self.ingreso_retiro==1:
+            self.saldo=self.saldo+self.cantidad_user
+            Cuenta.mostrar_datos(Cuenta)
+        elif self.ingreso_retiro==2:
+            if (self.saldo-self.cantidad_user)>0:
+                self.saldo=self.saldo-self.cantidad_user
+                Cuenta.mostrar_datos(Cuenta)
+
     def datos_interes(self):
         print("Ahora vamos a calcular las ganancias del interes")
         print("Necesitamos saber los siguientes parametros")
@@ -81,11 +133,11 @@ class Cuenta():
 
     def revision_datos_interes(self):
         try:
-                self.ratio=float(self.ratio)
-                self.tiempo=float(self.tiempo)
-                is_int=True
+            self.ratio=float(self.ratio)
+            self.tiempo=float(self.tiempo)
+            is_int=True
         except ValueError:
-                is_int=False
+            is_int=False
 
         if is_int==False:
             print("Por favor asegurese que el ratio y el tiempo son valores numericos")
@@ -124,4 +176,4 @@ class Cuenta():
         print("Numero de a cuenta",self.numero_cuenta)
 
 if __name__=="__main__":
-    Cuenta.menu_banco()
+    Cuenta.crear_cuenta()
