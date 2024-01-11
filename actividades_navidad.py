@@ -355,15 +355,15 @@ class Persona():
             self.edad=input("Cuantos años tienes? ")
             try:
                 self.edad=int(self.edad)
-                if self.edad<18:
-                    self.mayor_edad=False
-                else:
-                    self.mayor_edad=True
                 verificado_edad=True
             except ValueError:
                 print("La edad debe ser un valor numerico")
                 time.sleep(2.5)
                 os.system("clear")
+        if self.edad<18:
+            self.mayor_edad=False
+        else:
+            self.mayor_edad=True
         verificado_sexo=False
         while verificado_sexo==False:
             print("Eres hombre o mujer? (M o F)")
@@ -385,6 +385,10 @@ class Persona():
 
     def datos_predeterminados(self):
         self.edad=random.randint(1,60)
+        if self.edad<18:
+            self.mayor_edad=False
+        else:
+            self.mayor_edad=True
         self.sexo="M"
         Persona.generar_dni(Persona)
 
@@ -396,9 +400,7 @@ class Persona():
             sumatorio_dni=0
             while i<8:
                 numeros_dni+=[random.randint(0,9)]
-                print("num ",numeros_dni[i])
                 sumatorio_dni=numeros_dni[i]+sumatorio_dni
-                print("sumatorio: ",sumatorio_dni)
                 i=i+1
             match(sumatorio_dni%23):
                 case 0:
@@ -472,10 +474,19 @@ class Persona():
                     dni_valido=True
                 case _:
                     dni_valido=False
-    Persona.mostrar_datos(Persona)
+        i=0
+        self.dni=[]
+        while i<8:
+            self.dni.append(numeros_dni[i])
+            i=i+1
+        self.dni.append(letra_dni)
+        Persona.mostrar_datos(Persona)
 
     def mostrar_datos(self):
-        pass
+        print("Tu humano: ")
+        print("Genero: ", self.sexo)
+        print("DNI: ", self.dni)
+        print("Y tiene +18? ",self.mayor_edad)
     
 
 if __name__=="__main__":
