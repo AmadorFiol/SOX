@@ -22,9 +22,7 @@ class General():
             case "2":
                 Cancion.canciones_default(Cancion)
             case "3":
-                print("Aun en proceso")
-                General.menu_general
-                #Persona.menu_persona()
+                Persona.menu_crear_persona()
             case "4":
                 SystemExit
             case _:
@@ -323,6 +321,162 @@ class Cancion:
             print(j)
             if self.titulos[j]==parametro_busqueda:
                 print(self.titulos[j]," de ",self.autores[j])
+
+class Persona():
+    def __init__():
+        pass
+
+    def menu_crear_persona():
+        verificado=False
+        while verificado==False:
+            #Cambiar mensaje bienvenida
+            print("---Mensaje de bienvenida---")
+            print("1. Realizar pruebas con datos predeterminados")
+            print("2. Realizar pruebas con datos personalizados")
+            print("3. Volver al menu principal")
+            match(input("Esriba solo el numero porfavor: ")):
+                case "1":
+                    verificado=True
+                    Persona.datos_predeterminados(Persona)
+                case "2":
+                    verificado=True
+                    Persona.datos_personalizados(Persona)
+                case "3":
+                    verificado=True
+                    General.menu_general()
+                case _:
+                    print("Reintente denuevo")
+                    time.sleep(1.5)
+                    os.system("clear")
+
+    def datos_personalizados(self):
+        verificado_edad=False
+        while verificado_edad==False:
+            self.edad=input("Cuantos años tienes? ")
+            try:
+                self.edad=int(self.edad)
+                if self.edad<18:
+                    self.mayor_edad=False
+                else:
+                    self.mayor_edad=True
+                verificado_edad=True
+            except ValueError:
+                print("La edad debe ser un valor numerico")
+                time.sleep(2.5)
+                os.system("clear")
+        verificado_sexo=False
+        while verificado_sexo==False:
+            print("Eres hombre o mujer? (M o F)")
+            self.sexo=input("(Si no te identificas con ninguno deja el espacio en blanco) ")
+            match(self.sexo):
+                case "m"|"M"|"hombre"|"Hombre"|"macho"|"Macho":
+                    self.sexo="M"
+                    verificado_sexo=True
+                case "f"|"F"|"mujer"|"Mujer"|"hembra"|"Hembra":
+                    self.sexo="F"
+                    verificado_sexo=True
+                case "":
+                    self.sexo="H"
+                case _:
+                    print("Sino se siente identificado con ninguno de los dos recuerde dejar el espacio en blanco")
+                    time.sleep(4)
+                    os.system("clear")
+        Persona.generar_dni(Persona)
+
+    def datos_predeterminados(self):
+        self.edad=random.randint(1,60)
+        self.sexo="M"
+        Persona.generar_dni(Persona)
+
+    def generar_dni(self):
+        dni_valido=False
+        while dni_valido==False:
+            numeros_dni=[]
+            i=0
+            sumatorio_dni=0
+            while i<8:
+                numeros_dni+=[random.randint(0,9)]
+                print("num ",numeros_dni[i])
+                sumatorio_dni=numeros_dni[i]+sumatorio_dni
+                print("sumatorio: ",sumatorio_dni)
+                i=i+1
+            match(sumatorio_dni%23):
+                case 0:
+                    letra_dni="T"
+                    dni_valido=True
+                case 1:
+                    letra_dni="R"
+                    dni_valido=True
+                case 2:
+                    letra_dni="W"
+                    dni_valido=True
+                case 3:
+                    letra_dni="A"
+                    dni_valido=True
+                case 4:
+                    letra_dni="G"
+                    dni_valido=True
+                case 5:
+                    letra_dni="M"
+                    dni_valido=True
+                case 6:
+                    letra_dni="Y"
+                    dni_valido=True
+                case 7:
+                    letra_dni="F"
+                    dni_valido=True
+                case 8:
+                    letra_dni="P"
+                    dni_valido=True
+                case 9:
+                    letra_dni="D"
+                    dni_valido=True
+                case 10:
+                    letra_dni="X"
+                    dni_valido=True
+                case 11:
+                    letra_dni="B"
+                    dni_valido=True
+                case 12:
+                    letra_dni="N"
+                    dni_valido=True
+                case 13:
+                    letra_dni="J"
+                    dni_valido=True
+                case 14:
+                    letra_dni="Z"
+                    dni_valido=True
+                case 15:
+                    letra_dni="S"
+                    dni_valido=True
+                case 16:
+                    letra_dni="Q"
+                    dni_valido=True
+                case 17:
+                    letra_dni="V"
+                    dni_valido=True
+                case 18:
+                    letra_dni="H"
+                    dni_valido=True
+                case 19:
+                    letra_dni="L"
+                    dni_valido=True
+                case 20:
+                    letra_dni="C"
+                    dni_valido=True
+                case 21:
+                    letra_dni="K"
+                    dni_valido=True
+                case 22:
+                    letra_dni="E"
+                    dni_valido=True
+                case _:
+                    dni_valido=False
+    Persona.mostrar_datos(Persona)
+
+    def mostrar_datos(self):
+        pass
     
+
 if __name__=="__main__":
     General.menu_general()
