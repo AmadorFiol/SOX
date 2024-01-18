@@ -491,3 +491,10 @@ class Persona():
 
 if __name__=="__main__":
     General.menu_general()
+
+    '''
+    Menus en una clase distinta
+    Poner los datos en constructor es ponerlo por defecto
+    Revisar algunos while y cambiar por foreachs
+    Clases helper
+    '''
