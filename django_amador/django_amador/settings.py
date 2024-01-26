@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'persona',
+    'calculadora',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +77,12 @@ WSGI_APPLICATION = 'django_amador.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'test',          # Nombre de la base de datos que creaste
+        'USER': 'postgres',      # Usuario de la base de datos
+        'PASSWORD': '2022@Smx',      # Contraseña del usuario de la base de datos
+        'HOST': 'localhost',           # Host de la base de datos (puede ser localhost o una dirección IP)
+        'PORT': '5432',                # Puerto de PostgreSQL
     }
 }
 
