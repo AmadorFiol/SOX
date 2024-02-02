@@ -3,7 +3,7 @@ from passwords.models import Datos
 # Create your views here.
 
 def ShowPass(self):
-    show=Datos.objects(f"SELECT {self.password} FROM ")
+    show=Datos.objects(f"SELECT password FROM password_datos WHERE username={self.username}")
 
 def new(self):
     self.usuario=input("Username: ")
