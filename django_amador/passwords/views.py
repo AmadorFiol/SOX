@@ -8,9 +8,10 @@ def ShowPass(self):
 def new(self):
     self.usuario=input("Username: ")
     self.password=input("Password: ")
+    add=Datos.objects(f"INSERT INTO password_datos('username','password') VALUES ('{self.password}','{self.username}')")
 
 def change(self):
-    ch=Datos.objects(f"UPDATE {{{'''TODO tabla'''}}} SET {self.password} WHERE {self.username}")
+    ch=Datos.objects(f"UPDATE password_datos SET {self.password} WHERE {self.username}")
 
 def delete(self):
-    dele=Datos.objects(f"DELETE {self.password} FROM {{{'''TODO tabla'''}}} WHERE {self.username}")
+    dele=Datos.objects(f"DELETE {self.password} FROM password_datos WHERE {self.username}")
