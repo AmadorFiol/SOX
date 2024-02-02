@@ -58,4 +58,11 @@ def eliminar_crontrasena():
     print("Aun en proceso")
     print("Va a ser devuelto al menu")
     time.sleep(2)
-    .menu()")
+    .menu()
+
+def index(self):
+    self.usuario=input("Username: ")
+    self.password=input("Password: ")
+    
+def ShowPass():
+    passw=Datos.objects("Select password From ")
