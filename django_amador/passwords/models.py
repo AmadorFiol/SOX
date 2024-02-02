@@ -10,6 +10,8 @@ class Datos(models.Model):
     def to_json(self):
         pass
 
+
+    #Lo mio propio
     def menu():
         verificado=False
         while verificado==False:
