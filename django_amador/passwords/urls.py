@@ -3,5 +3,8 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('', views.Datos, name='password'),
+    path('new', views.new, name='nueva-contraseña'),
+    path('change',views.change, name="cambiar-contraseña"),
+    path('detelete', views.delete, name="eliminar-contraseña"),
+    path('',views.to_json,name="")
 ]

@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from passwords.models import Datos
+from django.http import JsonResponse
+import json
+
 # Create your views here.
 
 def ShowPass(self):
@@ -7,18 +10,33 @@ def ShowPass(self):
     show=Datos.objects(f"SELECT password FROM password_datos WHERE username={username_busqueda}")
     return(show)
 
-def new(self):
-    self.usuario=input("Username: ")
+def new(request,self=Datos):
+    self.usuario=json.loads(request.POST.get('username'))
     self.password=input("Password: ")
     add=Datos.objects(f"INSERT INTO password_datos('username','password') VALUES ('{self.password}','{self.username}')")
-    return(add)
+    response={
+        add
+    }
+    return JsonResponse(response)
 
 def change(self):
     username_busqueda=input('Cual es tu username: ')
     ch=Datos.objects(f"UPDATE password_datos SET {self.password} WHERE {username_busqueda}")
-    return(ch)
+    response={
+        ch
+    }
+    return JsonResponse(response)
 
 def delete(self):
     username_busqueda=input('Cual es tu username: ')
     dele=Datos.objects(f"DELETE password AND username FROM password_datos WHERE username={username_busqueda}")
-    return(dele)
+    response={
+        dele
+    }
+    return JsonResponse(response)
+
+def to_json(request):
+    response={
+        "response": "working"
+    }
+    return JsonResponse(response)
