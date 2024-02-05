@@ -1,39 +1,24 @@
 from django.shortcuts import render
 from passwords.models import Datos
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 import json
 
 # Create your views here.
 
-def ShowPass(self):
-    username_busqueda=input('Cual es tu username: ')
-    show=Datos.objects(f"SELECT password FROM password_datos WHERE username={username_busqueda}")
-    return(show)
+def show(self):
+    Datos.objects.serialize(username='Username: ', password='Password: ')
 
 def new(request,self=Datos):
-    self.username=json.loads(request.POST.get('username'))
-    self.password=input("Password: ")
-    add=Datos.objects(f"INSERT INTO password_datos('username','password') VALUES ('{self.password}','{self.username}')")
-    response={
-        add
-    }
-    return JsonResponse(response)
+    Datos.objects.create(username='Username: ', password='New password: ')
+    return HttpResponse("New user created")
 
 def change(self):
-    username_busqueda=input('Cual es tu username: ')
-    ch=Datos.objects(f"UPDATE password_datos SET {self.password} WHERE {username_busqueda}")
-    response={
-        ch
-    }
-    return JsonResponse(response)
+    Datos.objects.filter(username='Username: ').update(password='New password: ')
+    return HttpResponse("Password changed succesfully")
 
 def delete(self):
-    username_busqueda=input('Cual es tu username: ')
-    dele=Datos.objects(f"DELETE password AND username FROM password_datos WHERE username={username_busqueda}")
-    response={
-        dele
-    }
-    return JsonResponse(response)
+    Datos.objects.filter(username='Username: ').delete()
+    return HttpResponse("The user have been deleted")
 
 def to_json(request):
     response={
