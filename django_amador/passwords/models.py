@@ -12,6 +12,7 @@ class Datos(models.Model):
 
 
     #Lo mio propio
+    '''
     def menu():
         verificado=False
         while verificado==False:
@@ -70,3 +71,4 @@ class Datos(models.Model):
         print("Va a ser devuelto al menu")
         time.sleep(2)
         Datos.menu()
+    '''
