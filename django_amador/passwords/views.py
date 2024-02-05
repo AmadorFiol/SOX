@@ -11,7 +11,7 @@ def ShowPass(self):
     return(show)
 
 def new(request,self=Datos):
-    self.usuario=json.loads(request.POST.get('username'))
+    self.username=json.loads(request.POST.get('username'))
     self.password=input("Password: ")
     add=Datos.objects(f"INSERT INTO password_datos('username','password') VALUES ('{self.password}','{self.username}')")
     response={
