@@ -1,24 +1,40 @@
 from django.shortcuts import render
 from passwords.models import Datos
 from django.http import HttpResponse, JsonResponse
-import json
+from django.core import serializers
+
 
 # Create your views here.
 
 def show(self):
-    Datos.objects.serialize(username='Username: ', password='Password: ')
+    response=serializers.serialize('json',Datos.objects.all())
+    return JsonResponse(response, safe=False)
 
-def new(request,self=Datos):
-    Datos.objects.create(username='Username: ', password='New password: ')
-    return HttpResponse("New user created")
+def new(request):
+    username= request.GET.get("username", "")
+    password= request.GET.get("password", "")
+    Datos.objects.create(username=username, password=password)
+    response={
+        "response": "New user created"
+    }
+    return JsonResponse(response)
 
-def change(self):
-    Datos.objects.filter(username='Username: ').update(password='New password: ')
-    return HttpResponse("Password changed succesfully")
+def change(request):
+    username=request.GET.get("username","")
+    new_password=request.GET.get("new_password","")
+    Datos.objects.filter(username=username).update(password=new_password)
+    response={
+        "response": "Password changed succesfully"
+    }
+    return JsonResponse(response)
 
-def delete(self):
-    Datos.objects.filter(username='Username: ').delete()
-    return HttpResponse("The user have been deleted")
+def delete(request):
+    username=request.GET.get("username","")
+    Datos.objects.filter(username=username).delete()
+    response={
+        "response": "The user have been deleted"
+    }
+    return JsonResponse(response)
 
 def to_json(request):
     response={
