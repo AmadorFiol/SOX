@@ -3,7 +3,7 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('',views.to_json,name=""),
+    path('',views.testing,name=""),
     path('new/', views.new, name='nueva-contraseña'),
     path('change/',views.change, name="cambiar-contraseña"),
     path('delete/', views.delete, name="eliminar-contraseña"),
