@@ -1,0 +1,5 @@
+docker pull postgres
+sudo docker images -a
+docker run --name post -e POSTGRES_PASSWORD=2022@Smx -d postgres
+sudo docker container ls
+sudo docker exect -it [container_id] bash
