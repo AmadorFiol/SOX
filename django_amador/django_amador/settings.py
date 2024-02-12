@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'django_amador.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test',          # Nombre de la base de datos que creaste
+        'NAME': 'passwordgestor',          # Nombre de la base de datos que creaste
         'USER': 'postgres',      # Usuario de la base de datos
-        'PASSWORD': '2022@Smx',      # Contraseña del usuario de la base de datos
-        'HOST': 'localhost',           # Host de la base de datos (puede ser localhost o una dirección IP)
+        'PASSWORD': 'postgres',      # Contraseña del usuario de la base de datos
+        'HOST': 'db',           # Host de la base de datos (puede ser localhost o una dirección IP)
         'PORT': '5432',                # Puerto de PostgreSQL
     }
 }

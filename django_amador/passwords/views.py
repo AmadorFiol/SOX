@@ -23,6 +23,7 @@ def new(request):
             response="Please, enter a username and a password"
             HttpResponseBadRequest(response)
         else:
+            '''
             all_user=Datos.objects.values('username') #Insertamos una lista de todos los usernames 
             for username in all_user:   #Revisamos si el username esta en la lista de todos los usernames
                 if all_user==username:  #Creamos boleano para controlar si el usuario existe
@@ -33,10 +34,11 @@ def new(request):
                 response="This username is already in use, please use another one"
                 HttpResponseBadRequest(response)
             else:
-                entry=Datos.objects.create(username=username, password=password)
-                entry.save()
-                response={"response": "New user created succesfully"}
-                return JsonResponse(response)
+            '''
+            entry=Datos.objects.create(username=username, password=password)
+            entry.save()
+            response={"response": "New user created succesfully"}
+            return JsonResponse(response)
     else:
         response="Be sure the method is POST"
         HttpResponseBadRequest(response)
@@ -73,6 +75,7 @@ def delete(request):
             response="Please, enter a username"
             HttpResponseBadRequest(response)
         else:
+            '''
             all_user=[]
             for i in Datos.objects.values('username'): #Insertamos una lista de todos los usernames
                 all_user+=[Datos.objects.values('username')]
@@ -83,13 +86,16 @@ def delete(request):
                     exists=False
             print(exists)
             if exists==True:
-                entry=Datos.objects.filter(username=username)
-                entry.delete()
-                response={"response": "The user have been deleted"}
-                return HttpResponse(response)
+            '''
+            entry=Datos.objects.filter(username=username)
+            entry.delete()
+            response={"response": "The user have been deleted"}
+            return HttpResponse(response)
+            '''
             elif exists==False:
                 response="This user doesn't exists"
                 HttpResponseBadRequest(response)
+            '''
     else:
         response="Be sure the method is POST"
         HttpResponseBadRequest(response)
