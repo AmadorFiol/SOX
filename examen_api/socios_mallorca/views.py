@@ -7,7 +7,7 @@ import json
 
 # Create your views here.
 def options(request):
-    response="Las paginas disponibles son las siguiente: introducir,modificar,mostrar"
+    response="Las paginas disponibles son las siguiente: 'introducir/','modificar/','mostrar/','baja/'"
     return HttpResponse(response)
 
 @csrf_exempt
@@ -37,6 +37,19 @@ def modificar(request):
         entry=Socio.objects.filter(dni=dni)
         entry.update(password=new_password)
         response={"response": "Password changed succesfully"}
+        return JsonResponse(response)
+    else:
+        response="Comprueba que has insertado los datos via POST"
+        return HttpResponse(response)
+
+@csrf_exempt   
+def baja(request):
+    if request.method=='POST':
+        my_json=json.loads(request.body.decode("UTF8").replace("*","*"))
+        dni=my_json['dni']
+        entry=Socio.objects.filter(dni=dni)
+        entry.delete()
+        response={"response": "El socio ha sido dado de baja exitosamente"}
         return JsonResponse(response)
     else:
         response="Comprueba que has insertado los datos via POST"
