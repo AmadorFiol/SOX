@@ -1,5 +1,4 @@
 from django.db import models
-import os,time
 
 # Create your models here.
 class Datos(models.Model):
